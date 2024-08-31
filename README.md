@@ -44,9 +44,14 @@
 
 ![image](https://github.com/user-attachments/assets/1f63da75-bf04-48f5-9719-8da4b449fe08)
 
+   > ###  6. Test for unique ISBN.
+#### Should throw an error if ISBN is already present for different book
 
+![image](https://github.com/user-attachments/assets/b6be9b04-1eb0-4d83-a885-93adec3fba78)
 
+#### Add code in addBook for maintaining uniqueness of ISBN.
 
+![image](https://github.com/user-attachments/assets/780e8add-d260-4b00-bc5f-f5597b661992)
 
 
 
