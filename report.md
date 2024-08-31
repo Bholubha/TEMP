@@ -19,3 +19,13 @@ Adding code in addBook method for storing book in 'BOOKS' object of Library
 
 ![image](https://github.com/user-attachments/assets/b302b2a2-df9c-4354-b410-d714311f6f92)
 
+   > ###  3. All information about book must provided. ( ISBN, title, author, publication_year must provided )
+
+If any field of book is not provided then throw an error, there is no code in addBook for checking this so test failed.
+
+![image](https://github.com/user-attachments/assets/4e26d52b-59d0-4d45-ad5b-c43f8559e120)
+
+add check and if any field have not value then throw an error from addBook method of AddBookHelper Class
+
+![image](https://github.com/user-attachments/assets/4f4f640f-bf45-457e-9734-31572a0b0166)
+
