@@ -34,3 +34,20 @@
 #### Add code for validate format of ISBN
 
 ![image](https://github.com/user-attachments/assets/4fdaba5a-4947-4819-aa6c-5e84b77f310d)
+
+   > ###  5. Test for testing copy_count field of Database which track number of same copy of book.
+#### Adding two identical book in test so now copy_count should be 2 for that book.
+
+![image](https://github.com/user-attachments/assets/87e9df6c-76e1-4977-9e0d-8f672c661d18)
+
+#### Implement logic for tracking count of same books
+
+![image](https://github.com/user-attachments/assets/1f63da75-bf04-48f5-9719-8da4b449fe08)
+
+
+
+
+
+
+
+
