@@ -1,5 +1,12 @@
 # Add Book Unit-Test
    > ###  1. First Test for checking message of successfully adding book
+```javascript
+   test('should return successfull message of adding book', () => {
+        const message = addBookHelperInstance.addBook('978-0135166307',"Effective Java","Joshua Bloch","2018")
+        // addBook should return message of type string, if book added successfully
+        expect(message).toBe("Book stored successfully")
+    });
+```
 #### There is not any production code so test got failed
 
 ![image](https://github.com/user-attachments/assets/dde5b0f6-fa47-456c-a0a2-624528926154)
@@ -38,16 +45,16 @@
    > ###  5. Test for testing copy_count field of Database which track number of same copy of book.
 #### Adding two identical book in test so now copy_count should be 2 for that book.
 
-![image](https://github.com/user-attachments/assets/87e9df6c-76e1-4977-9e0d-8f672c661d18)
+![image](https://github.com/user-attachments/assets/3009d96e-04a0-427e-a8d6-b12da44932b6)
 
 #### Implement logic for tracking count of same books
 
-![image](https://github.com/user-attachments/assets/1f63da75-bf04-48f5-9719-8da4b449fe08)
+![image](https://github.com/user-attachments/assets/a9a9e483-efea-4822-8f03-52dc5b052876)
 
    > ###  6. Test for unique ISBN.
 #### Should throw an error if ISBN is already present for different book
 
-![image](https://github.com/user-attachments/assets/b6be9b04-1eb0-4d83-a885-93adec3fba78)
+![image](https://github.com/user-attachments/assets/1d34fd07-327f-42f0-91c6-811efeb62800)
 
 #### Add code in addBook for maintaining uniqueness of ISBN.
 
