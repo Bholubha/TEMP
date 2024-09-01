@@ -130,4 +130,80 @@
 
 ![image](https://github.com/user-attachments/assets/99d2849e-70c8-49a3-83e0-fb10373a11d3)
 
+---
+<br>
+
+# Return Book Unit-Test
+
+   > ###  1. Add first test of return book expect success message of returning book.
+
+```javascript
+ test('should return successfull message of returning book',()=>{
+        addBookHelperInstance.addBook('978-1449355739',"Learning Python","Mark Lutz","2013");
+        borrowBookHelperInstance.borrowBook('978-1449355739')
+        const message = returnBookHelperInstance.returnBook('978-1449355739')
+        expect(message).toBe("Book returned successfully")        
+    })
+```
+#### In production code there is not Helper class for returning book so test fail
+
+![image](https://github.com/user-attachments/assets/0487fbec-e1ec-4d05-8637-1cee4877566e)
+
+#### Create ReturnBookHelper Class and implement returnBook method
+
+![image](https://github.com/user-attachments/assets/561a9d91-efe5-447e-a22e-032693fed64a)
+
+   > ###  2. Add Test that check copy_count field after returning book
+```javascript
+    test('should increment copy_count of book in Database',()=>{
+
+        addBookHelperInstance.addBook('978-0132354165',"Effective Modern C++","Scott Meyers","2014");
+        borrowBookHelperInstance.borrowBook('978-0132354165')
+        returnBookHelperInstance.returnBook('978-0132354165')
+        // tested that copy_count decrement by borrowBook, so now it increment by returnBook also.
+        expect(libraryInstance.getAllBooks()['978-0132354165'].copy_count).toBe(1)
+
+    })
+```
+#### After returning book copy_count must be incremented
+
+![image](https://github.com/user-attachments/assets/97466b44-e1da-44fd-967b-4fdec9fa26c7)
+
+#### Create changes in returnBook method
+
+![image](https://github.com/user-attachments/assets/77e88205-0219-429e-92b4-b3b0d4e790a8)
+
+   > ###  3. Add Test -> If book which user want to return not present in Database then throw Error.
+
+```javascript
+   test('should throw an error if book is not present in Database with provided ISBN',()=>{
+        expect(()=>returnBookHelperInstance.returnBook('123456')).toThrow("There is no record of the provided ISBN")
+    })
+```
+
+#### There is not any record with ISBN-123456 so it should throw error.
+
+![image](https://github.com/user-attachments/assets/b7c75588-ab29-4058-85a9-72322a540289)
+
+#### Add check in returnBook method for check that provided ISBN is present in Database or not
+
+![image](https://github.com/user-attachments/assets/25c9dd4f-348c-4ee3-b353-e9511d80234b)
+
+---
+<br>
+
+# View Book Unit-Test
+
+   > ###  1. Add first test for checking viewBook should return empty array when there is not any books
+
+```javascript
+    test('should return empty array for instance of Library which not contains any books',()=>{
+        let books =  viewBooksHelperInstance.viewBooks()
+        expect(books).toEqual([])
+    })
+```
+
+#### viewBook should return empty array for instance of Library which not contains any books
+
+![image](https://github.com/user-attachments/assets/14477cae-ce87-427b-91ec-e2c98b834ef6)
 
