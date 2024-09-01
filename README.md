@@ -112,3 +112,22 @@
 
 ![image](https://github.com/user-attachments/assets/de7ac781-d33a-40a3-865c-be42246b55b5)
 
+   > ###  4. Add test that if Book is currently unavailable then throw an Error.
+
+```javascript
+   test('should throw an error if book is  currently unavailable',()=>{
+        addBookHelperInstance.addBook('978-0321563842',"Effective C++","Scott Meyers","2005");
+        borrowBookHelperInstance.borrowBook('978-0321563842')
+        expect(()=>borrowBookHelperInstance.borrowBook('978-0321563842')).toThrow('Book is currently unavailable')
+    })
+```
+
+#### borrowBook not check copy_count before returning book so test fail
+
+![image](https://github.com/user-attachments/assets/77f30de0-1359-40ae-9204-27a8fea25357)
+
+#### Add check of copy_count before returning book.
+
+![image](https://github.com/user-attachments/assets/99d2849e-70c8-49a3-83e0-fb10373a11d3)
+
+
