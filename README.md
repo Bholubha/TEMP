@@ -79,3 +79,20 @@
 
 ![image](https://github.com/user-attachments/assets/6b96cb0e-8916-43d2-a0bf-8ecae8fa7932)
 
+   > ###  2. Add test for testing copy_count field after borrow operation
+```javascript
+    test('should decrement copy_count of book',()=>{
+        addBookHelperInstance.addBook('978-0133379937',"Programming in C","Stephen G. Kochan","2004")
+        borrowBookHelperInstance.borrowBook('978-0133379937');
+        // copy_count must be zero after borrowing this book
+        expect(libraryInstance.getAllBooks()['978-0133379937'].copy_count).toBe(0)
+    })
+```
+#### There is not logic for decrement copy_count field in borrowBook Method so test fail.
+
+![image](https://github.com/user-attachments/assets/ec78080d-81a2-492e-8a2c-f164d558721f)
+
+#### Add logic for decrement copy_count of borrowed book.
+
+![image](https://github.com/user-attachments/assets/43634b82-bafa-4f40-935f-8055241fc1b3)
+
