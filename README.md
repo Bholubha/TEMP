@@ -1,5 +1,6 @@
 # Add Book Unit-Test
    > ###  1. First Test for checking message of successfully adding book
+
 ```javascript
    test('should return successfull message of adding book', () => {
         const message = addBookHelperInstance.addBook('978-0135166307',"Effective Java","Joshua Bloch","2018")
@@ -7,7 +8,7 @@
         expect(message).toBe("Book stored successfully")
     });
 ```
-#### There is not any production code so test got failed
+#### addBook should return suceess message of adding book
 
 ![image](https://github.com/user-attachments/assets/dde5b0f6-fa47-456c-a0a2-624528926154)
 
@@ -16,7 +17,21 @@
 ![image](https://github.com/user-attachments/assets/a5954cf2-a372-430c-a10b-6f6093b8d5f2)
 
    > ###  2. Test for testing presence of book in Database.
-#### In production code there is not Book Class and also getAllBooks method is not present in Library Class so test failed.
+
+```javascript
+test('should store book in Database',()=>{
+        addBookHelperInstance.addBook('978-0596805524',"JavaScript: The Good Parts","Douglas Crockford","2008")
+        
+        // libraryInstance.getAllBooks should return all books present in database as 'Object'
+        // now check book with particular ISBN was define or undefine
+        expect(libraryInstance.getAllBooks()['978-0596805524']).toBeDefined()
+
+        // if define then also match the bookDetails(object of 'Book') with expected object of 'Book'
+        expect(libraryInstance.getAllBooks()['978-0596805524'].bookDetails).toEqual(new Book('978-0596805524',"JavaScript: The Good Parts","Douglas Crockford","2008"))
+
+    })
+```
+#### Added book must be present in Database
 
 ![image](https://github.com/user-attachments/assets/1408ef36-f44d-4313-8c54-39341e242f33)
 
@@ -25,7 +40,14 @@
 ![image](https://github.com/user-attachments/assets/10d0d97f-028f-4b47-98b1-6b903df7179a)
 
    > ###  3. All information about book must provided. ( ISBN, title, author, publication_year must provided )
-#### If any field of book is not provided then throw an error, there is no code in addBook for checking this so test failed.
+
+```javascript
+     test('should throw an error if enough information about book was NOT provided',()=>{        
+        expect(()=> addBookHelperInstance.addBook('978-0134685991',"Java: The Complete Reference")).toThrow("Please provide enough informations")
+    })
+```
+
+#### If any field of book is not provided while adding book then throw an error.
 
 ![image](https://github.com/user-attachments/assets/28991836-b766-4dd5-a358-6c74b26f33d6)
 
@@ -34,6 +56,13 @@
 ![image](https://github.com/user-attachments/assets/74e034da-2ebd-4499-b6e6-11b1253fc959)
 
    > ###  4. Test format of ISBN
+
+```javascript
+    test('should throw an error if ISBN is not in valid format',()=>{
+        expect(()=> addBookHelperInstance.addBook('978-01359570avc',"JavaScript and JQuery","Jon Duckett","2014")).toThrow("Please provide correct ISBN")
+    })
+```
+
 #### Add test which check that if ISBN is in valid format otherwise throw an error
 
 ![image](https://github.com/user-attachments/assets/19c5ab70-8525-47a0-9b63-7dfa0fd62d68)
@@ -43,6 +72,17 @@
 ![image](https://github.com/user-attachments/assets/a56f41a7-c947-406f-a51d-e3bc74e0cc51)
 
    > ###  5. Test for testing copy_count field of Database which track number of same copy of book.
+
+```javascript
+  test('should track number of same copy of identical book',()=>{
+        addBookHelperInstance.addBook('978-1118531648',"JavaScript: The Definitive Guide","David Flanagan","2020")
+        addBookHelperInstance.addBook('978-1118531648',"JavaScript: The Definitive Guide","David Flanagan","2020")
+
+        // after adding two identical book copy_count must be 2
+        expect(libraryInstance.getAllBooks()['978-1118531648'].copy_count).toBe(2)
+    })
+```
+
 #### Adding two identical book in test so now copy_count should be 2 for that book.
 
 ![image](https://github.com/user-attachments/assets/3009d96e-04a0-427e-a8d6-b12da44932b6)
@@ -52,6 +92,14 @@
 ![image](https://github.com/user-attachments/assets/a9a9e483-efea-4822-8f03-52dc5b052876)
 
    > ###  6. Test for unique ISBN.
+
+```javascript
+    test('should throw an error if ISBN is already present for different book',()=>{
+        addBookHelperInstance.addBook('978-0134757599',"Head First Java","Kathy Sierra, Bert Bates","2005")
+        expect(()=> addBookHelperInstance.addBook('978-0134757599',"Mathematics","Ramanujav","2005")).toThrow("Provided ISBN already present for other book")
+    })
+```
+
 #### Should throw an error if ISBN is already present for different book
 
 ![image](https://github.com/user-attachments/assets/1d34fd07-327f-42f0-91c6-811efeb62800)
@@ -60,6 +108,8 @@
 
 ![image](https://github.com/user-attachments/assets/ae77494c-7d10-4c72-978b-90bc5c875203)
 
+---
+<br>
 
 # Borrow Book Unit-Test
    > ###  1. Add test for checking that borrowBook should return desired Book object
@@ -71,7 +121,7 @@
 
     })
 ```
-#### There is not BorrowBookHelper class in productionccode so test case fail.
+#### borrowBook should return Object of Book correspond to ISBN.
 
 ![image](https://github.com/user-attachments/assets/364fc61b-ee1f-45c0-8d30-0493b473ba9d)
 
@@ -88,7 +138,7 @@
         expect(libraryInstance.getAllBooks()['978-0133379937'].copy_count).toBe(0)
     })
 ```
-#### There is not logic for decrement copy_count field in borrowBook Method so test fail.
+#### borrowBook should decrement copy_count after apply borrow operation
 
 ![image](https://github.com/user-attachments/assets/ec78080d-81a2-492e-8a2c-f164d558721f)
 
@@ -104,7 +154,7 @@
     })
 ```
 
-#### There is not any check for this test in borrowBook so test fail
+#### If book is not in Database then borrowBook should throw an Error.
 
 ![image](https://github.com/user-attachments/assets/e08fc001-239a-4f88-ae6a-b9da2f1fbf5a)
 
@@ -122,7 +172,7 @@
     })
 ```
 
-#### borrowBook not check copy_count before returning book so test fail
+#### borrowBook should throw an Error if copy_count of book is 0
 
 ![image](https://github.com/user-attachments/assets/77f30de0-1359-40ae-9204-27a8fea25357)
 
@@ -145,7 +195,7 @@
         expect(message).toBe("Book returned successfully")        
     })
 ```
-#### In production code there is not Helper class for returning book so test fail
+#### returnBook method should return success message of returning book.
 
 ![image](https://github.com/user-attachments/assets/0487fbec-e1ec-4d05-8637-1cee4877566e)
 
@@ -206,4 +256,48 @@
 #### viewBook should return empty array for instance of Library which not contains any books
 
 ![image](https://github.com/user-attachments/assets/14477cae-ce87-427b-91ec-e2c98b834ef6)
+
+#### Create ViewBooksHelper Class and implement viewBooks method
+
+![image](https://github.com/user-attachments/assets/7bc5eafa-5425-4238-a5a8-013f90a6e9d4)
+
+   > ###  2. Add test -> after applying add, borrow and return book operation viewBooks return expected array of books
+
+```javascript
+    test('should return available books after applying add,borrow and return',()=>{
+        
+        // add two books
+        addBookHelperInstance.addBook('978-0134754499',"Automate the Boring Stuff with Python","Al Sweigart","2015")
+        addBookHelperInstance.addBook('978-0132354165',"Effective Modern C++","Scott Meyers","2014")
+
+        let books =  viewBooksHelperInstance.viewBooks()
+        // viewBook should return array of object(type 'Book') of 2 books
+        let expected_books = [new Book('978-0134754499',"Automate the Boring Stuff with Python","Al Sweigart","2015"), new Book('978-0132354165',"Effective Modern C++","Scott Meyers","2014")]
+
+        expect(books).toEqual(expected_books)
+
+        // borrow one book
+        borrowBookHelperInstance.borrowBook('978-0132354165')
+        books =  viewBooksHelperInstance.viewBooks()
+        // After borrowing viewBook should return only one object(type 'Book') of book
+        expected_books = [new Book('978-0134754499',"Automate the Boring Stuff with Python","Al Sweigart","2015")]
+        expect(books).toEqual(expected_books)
+
+        // return borrowed book
+        returnBookHelperInstance.returnBook('978-0132354165')
+        books =  viewBooksHelperInstance.viewBooks()
+        // After return book viewBook should again return array of object(type 'Book') of 2 books
+        expected_books = [new Book('978-0134754499',"Automate the Boring Stuff with Python","Al Sweigart","2015"), new Book('978-0132354165',"Effective Modern C++","Scott Meyers","2014")]
+        expect(books).toEqual(expected_books)
+
+    })
+```
+
+#### viewBook should remain consistent even after applying borrow and return operations
+
+![image](https://github.com/user-attachments/assets/94c44e7a-fce3-43dd-a989-a5aaef802ad9)
+
+#### viewBook return only those books which have copy_count > 0 
+
+![image](https://github.com/user-attachments/assets/5d757f28-44f1-4978-bfd7-3f8ffac0eb54)
 
