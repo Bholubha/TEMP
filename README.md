@@ -20,11 +20,11 @@
    > ###  3. All information about book must provided. ( ISBN, title, author, publication_year must provided )
 #### If any field of book is not provided then throw an error, there is no code in addBook for checking this so test failed.
 
-![image](https://github.com/user-attachments/assets/4e26d52b-59d0-4d45-ad5b-c43f8559e120)
+![image](https://github.com/user-attachments/assets/28991836-b766-4dd5-a358-6c74b26f33d6)
 
 #### Add check and if any field have not value then throw an error from addBook method of AddBookHelper Class
 
-![image](https://github.com/user-attachments/assets/4f4f640f-bf45-457e-9734-31572a0b0166)
+![image](https://github.com/user-attachments/assets/74e034da-2ebd-4499-b6e6-11b1253fc959)
 
    > ###  4. Test format of ISBN
 #### Add test which check that if ISBN is in valid format otherwise throw an error
