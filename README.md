@@ -61,5 +61,21 @@
 ![image](https://github.com/user-attachments/assets/ae77494c-7d10-4c72-978b-90bc5c875203)
 
 
+# Borrow Book Unit-Test
+   > ###  1. Add test for checking that borrowBook should return desired Book object
+```javascript
+    test('should return details of book correspond to ISBN',()=>{
+        addBookHelperInstance.addBook('978-0134845623',"Python Crash Course","Eric Matthes","2015")
+        const response = borrowBookHelperInstance.borrowBook('978-0134845623');
+        expect(response).toEqual(new Book('978-0134845623',"Python Crash Course","Eric Matthes","2015"))
 
+    })
+```
+#### There is not BorrowBookHelper class in productionccode so test case fail.
+
+![image](https://github.com/user-attachments/assets/364fc61b-ee1f-45c0-8d30-0493b473ba9d)
+
+#### Create BorrowBookHelper and implement borrowBook Method
+
+![image](https://github.com/user-attachments/assets/6b96cb0e-8916-43d2-a0bf-8ecae8fa7932)
 
