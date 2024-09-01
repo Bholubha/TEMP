@@ -2,7 +2,7 @@
    > ###  1. First Test for checking message of successfully adding book
 #### There is not any production code so test got failed
 
-![image](https://github.com/user-attachments/assets/fcd397cb-1234-4869-a591-92144747e47a)
+![image](https://github.com/user-attachments/assets/dde5b0f6-fa47-456c-a0a2-624528926154)
 
 #### Adding some production code for passing the failed test
 
