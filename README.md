@@ -4,9 +4,9 @@
 
 ![image](https://github.com/user-attachments/assets/dde5b0f6-fa47-456c-a0a2-624528926154)
 
-#### Adding some production code for passing the failed test
+#### Create Library Class and AddBookHelper Class, implement addBook method.
 
-![image](https://github.com/user-attachments/assets/176761b1-b75d-444f-969d-bb6a2c53005a)
+![image](https://github.com/user-attachments/assets/a5954cf2-a372-430c-a10b-6f6093b8d5f2)
 
    > ###  2. Test for testing presence of book in Database.
 #### In production code there is not Book Class and also getAllBooks method is not present in Library Class so test failed.
