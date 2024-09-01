@@ -11,11 +11,11 @@
    > ###  2. Test for testing presence of book in Database.
 #### In production code there is not Book Class and also getAllBooks method is not present in Library Class so test failed.
 
-![image](https://github.com/user-attachments/assets/928462ad-7f07-47bb-9a79-3055b613a055)
+![image](https://github.com/user-attachments/assets/1408ef36-f44d-4313-8c54-39341e242f33)
 
 #### Adding code in addBook method for storing book in 'BOOKS' object of Library
 
-![image](https://github.com/user-attachments/assets/b302b2a2-df9c-4354-b410-d714311f6f92)
+![image](https://github.com/user-attachments/assets/10d0d97f-028f-4b47-98b1-6b903df7179a)
 
    > ###  3. All information about book must provided. ( ISBN, title, author, publication_year must provided )
 #### If any field of book is not provided then throw an error, there is no code in addBook for checking this so test failed.
