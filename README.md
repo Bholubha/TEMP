@@ -96,3 +96,19 @@
 
 ![image](https://github.com/user-attachments/assets/43634b82-bafa-4f40-935f-8055241fc1b3)
 
+   > ###  3. Add test that if Book is not present in Database then throw an error.
+
+```javascript
+ test('should throw an error if book is not present in Database with provided ISBN',()=>{
+        expect(()=>borrowBookHelperInstance.borrowBook('978-0201616224')).toThrow('Book is not present in the database with this ISBN')
+    })
+```
+
+#### There is not any check for this test in borrowBook so test fail
+
+![image](https://github.com/user-attachments/assets/e08fc001-239a-4f88-ae6a-b9da2f1fbf5a)
+
+#### Add check logic for Book which not present in Database
+
+![image](https://github.com/user-attachments/assets/de7ac781-d33a-40a3-865c-be42246b55b5)
+
